@@ -1,5 +1,4 @@
-export interface list_users {
-
+export interface get_users_response {
     id : number;
     first_name: string;
     last_name: string;

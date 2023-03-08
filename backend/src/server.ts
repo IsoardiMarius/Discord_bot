@@ -23,7 +23,7 @@ const userRoutes = require('./routes/user_routes');
 
     // Here we define the node server endpoint
     app.listen(PORT, () => {
-        console.log(`Node server started on http://localhost:${PORT}${API_PATH}`);
+        console.log(`Node server started on http://localhost:${PORT}`);
     });
 
     // Here we define the test endpoint
