@@ -1,18 +1,18 @@
-# Example of ExpressJS based GraphQL app with authentication and access control system.
-
-- Apollo server setup
-- Authentication and authorization
-- Multiple middlewares usage
-- Schema generation level authentication
-
 # Requirements
 - npm
 - node
-- GraphQL client ( Insomnia )
 
 # Usage
-- npm install
-- npm run start
+- for install all dependencies : npm install
+- for run server : npm start
 
-# My Medium article on this topic: 
-https://medium.com/@nenadborovanin/expressjs-graphql-authentication-access-control-c5c8fe360b07
+# Must do in local
+- create .env file in root directory :
+look like this:
+```
+DB_USER: root
+DB_HOST: 127.0.0.1
+DB_DATABASE: discord_bot
+DB_PORT: 3306
+BOT_TOKEN: MTA4MzE4NjA2Mjg5MDkAs.mB3ql6VRffWoCv7REAQqmmk2OjkVhzJUd5psfs
+```

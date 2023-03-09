@@ -5,7 +5,6 @@ import {client} from "./discord/discord";
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const userRoutes = require('./routes/user_routes');
-const config = require("./config.json");
 
 (async () => {
     // Define the port and the path of the graphql endpoint
@@ -29,7 +28,8 @@ const config = require("./config.json");
     });
 
     // Here we define the discord client
-    await client.login(config.BOT_TOKEN).then(() => { console.log("Logged in to Discord") });
+    console.log(process.env.BOT_TOKEN)
+    await client.login(process.env.BOT_TOKEN).then(() => { console.log("Logged in to Discord") });
 
     // Here we define the test endpoint
     app.use(API_PATH, userRoutes);
