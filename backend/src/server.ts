@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import {client} from "./discord/discord";
-import {getTransactionsByWallet} from "./verification_nft/verify_holder_nft";
+import {checkIfWalletHoldNft, getNftMetadata, getAllNFTsForWallet} from "./verification_nft/verify_holder_nft";
 
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
@@ -34,12 +34,15 @@ const userRoutes = require('./routes/user_routes');
     // Here we define the discord client
     await client.login(process.env.BOT_TOKEN).then(() => { console.log("Logged in to Discord") });
 
-    // We test the method getTransactionsByWallet() from the file verify_holder_nft.ts
-    getTransactionsByWallet().then((transactions) => console.log(transactions));
-
-
     // Here we define the test endpoint
     app.use(API_PATH, userRoutes);
+
+    // Cette fonction permet de récupérer tous les NFTs d'un wallet
+    getAllNFTsForWallet("FrSdXZdV9H9vDjTgXzHujxC93HnPUmpDfVYsRVc5fyp4").then((nfts) => console.log(nfts) );
+    // Cette fonction permet de récupérer les métadonnées d'un NFT
+    getNftMetadata("13KKRD93XBzci3SLiiidgb4MaoGUsRsmr5C8D6CcGjUf").then((nfts) => console.log(nfts));
+    // Cette fonction permet de vérifier si un wallet possède un NFT
+    checkIfWalletHoldNft("FrSdXZdV9H9vDjTgXzHujxC93HnPUmpDfVYsRVc5fyp4", "13KKRD93XBzci3SLiiidgb4MaoGUsRsmr5C8D6CcGjUf").then((nfts) => console.log(nfts) );
 
 
 })();
