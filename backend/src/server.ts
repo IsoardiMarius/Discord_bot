@@ -2,11 +2,11 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import {client} from "./discord/discord";
-import {verifyIfWalletHasNftOfCollection} from "./verification_nft/verify_holder_nft";
-
-const cookieParser = require('cookie-parser');
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
+
 const userRoutes = require('./routes/user_routes');
+const nftRoutes = require('./routes/nft_routes');
 
 
 
@@ -36,9 +36,7 @@ const userRoutes = require('./routes/user_routes');
 
     // Here we define the test endpoint
     app.use(API_PATH, userRoutes);
-
-    // Cette fonction retourne un tableau contenant ou pas les nfts appartennant à la collection
-    await verifyIfWalletHasNftOfCollection("FrSdXZdV9H9vDjTgXzHujxC93HnPUmpDfVYsRVc5fyp4","Scalp Empire Nestor").then((nfts) => console.log(nfts) );
+    app.use(API_PATH, nftRoutes);
 
 
 
